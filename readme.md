@@ -25,3 +25,15 @@
 - Frontend : html5/css3 , nunjucks, bootstrap
 - Tools : vscode
 ---
+
+홈
+![이미지1](https://github.com/jjikky/jeju_travel/blob/main/readme_img/1.png?raw=true)
+
+로그인/회원가입
+![이미지2](https://github.com/jjikky/jeju_travel/blob/main/readme_img/2.png?raw=true)
+
+숙소 검색
+![이미지3](https://github.com/jjikky/jeju_travel/blob/main/readme_img/3.png?raw=true)
+
+리뷰 작성
+![이미지4](https://github.com/jjikky/jeju_travel/blob/main/readme_img/4.png?raw=true)
