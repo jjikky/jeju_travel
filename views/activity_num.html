@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    .wrap {
+        text-align: center;
+        margin-top: 10vh;
+    }
+</style>
+<div class="wrap">
+    {% for i in img_arr %}
+    <div class="activity_container">
+        <img class="activity_img" src="{{i}}">
+    </div>
+    {% endfor %}
+</div>
+<div id="location"></div>
+<div id="content"></div>
+<script>
+    window.onload = () => {
+        if (new URL(location.href).searchParams.get('loginError')) {
+            alert(new URL(location.href).searchParams.get('loginError'));
+            window.location.href = "/login";
+        }
+        document.getElementById('location').innerHTML = '{{data.Activity_Location}}';
+        var content = '{{data.Activity_Content}}'.split("@@@");
+        for (var i = 0; i < content.length; i++) {
+            console.log(content[i]);
+            var con = document.getElementById('content');
+            var div = document.createElement('div');
+            var text = document.createTextNode(content[i]);
+            div.appendChild(text);
+            con.appendChild(div);
+        }
+
+    };
+</script>
+<script>
+    var nav = document.getElementsByClassName('nav-link');
+    for (var i = 0; i < nav.length; i++) {
+        nav[i].className = 'nav-link';
+    }
+    document.getElementsByClassName('nav-link')[2].className += ' active';
+    document.getElementsByClassName('nav-link')[7].className += ' active';
+</script>
+{% endblock %}

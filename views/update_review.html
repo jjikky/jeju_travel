@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<div class="container">
+    <section class="title pb-3 mb-5">
+        <h1>리뷰 수정하기</h1>
+    </section>
+    <section class="form">
+        <form method="post" action="/my_review/{{review.dataValues.Review_Number}}?_method=PUT"
+            class="row g-3 needs-validation" novalidate>
+            <!-- <input type="hidden" name="_method" value="PUT" /> -->
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="place" class="form-label">명소 선택</label>
+                    <select class="form-select" id="place" name="Attraction_Number" required>
+                        <option selected disabled value="">
+                            선택...</option>
+                        {% for i in attraction %}
+                        <option value="{{i.dataValues.Attraction_Number}}">
+                            {{i.dataValues.Attraction_Name}}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    <div class="invalid-feedback">
+                        명소를 선택하세요.
+                    </div>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-2">
+                    <label for="star" class="form-label">별점</label>
+                    <label class="form-label" id="rangePrimary">{{review.dataValues.Review_Star}}</label>
+                    <input type="range" class="form-range" name="Review_Star" id="star" min="0" max="5" step="0.5"
+                        value={{review.dataValues.Review_Star}} onmousemove="rangePrimary.innerHTML=value">
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-12">
+                    <label for="description" class="form-label">내용</label>
+                    <textarea class="form-control" name="Review_Text" id="description" rows="10"
+                        placeholder="내용을 수정 해보세요!" required>{{review.dataValues.Review_Text}}</textarea>
+                    <div class="invalid-feedback">
+                        리뷰 내용을 입력하세요.
+                    </div>
+                </div>
+            </div>
+            <div class="row g-3">
+
+                <div class="col-md-4">
+                    <label for="date" class="form-label">방문일</label>
+                    <input type="text" name="Review_Visit_Date" id="datePicker" placeholder="YYYY-MM-DD"
+                        required></textarea>
+                    <div class="invalid-feedback">
+                        날짜를 입력하세요.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">수정하기</button>
+            </div>
+        </form>
+    </section>
+</div>
+<script>
+    var nav = document.getElementsByClassName('nav-link');
+    for (var i = 0; i < nav.length; i++) {
+        nav[i].className = 'nav-link';
+    }
+    document.getElementsByClassName('nav-link')[3].className += ' active';
+
+
+</script>
+{% if user and user.id %}
+{% else %}
+<script>
+    alert('로그인 후 접근 가능한 페이지 입니다');
+    location.href = 'http://localhost:3000/';
+</script>
+{% endif %}
+{% endblock %}

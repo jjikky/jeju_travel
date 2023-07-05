@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeju Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    #fwidth {
+      width: 60%;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .login {
+      width: 30%;
+      height: 600px;
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h2 {
+      color: navy;
+      font-size: 2em;
+    }
+
+    .login_id {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .login_id input {
+      width: 100%;
+      height: 40px;
+      border-radius: 30px;
+      margin-top: 10px;
+      padding: 0px 20px;
+      border: 1px solid lightgray;
+      outline: none;
+    }
+
+    .login_pw {
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .login_pw input {
+      width: 100%;
+      height: 40px;
+      border-radius: 30px;
+      margin-top: 10px;
+      padding: 0px 20px;
+      border: 1px solid lightgray;
+      outline: none;
+    }
+
+    .login_etc {
+      padding: 10px;
+      width: 80%;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .submit {
+      margin-top: 30px;
+      width: 80%;
+      width: 100%;
+      height: 50px;
+      border: 0;
+      outline: none;
+      border-radius: 40px;
+      background: linear-gradient(to left, navy, blue);
+      color: white;
+      font-size: 1.2em;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+
+    #kakao_btn {
+      /* padding-left: 3vw;
+      padding-right: 3vw; */
+      background: linear-gradient(to left, rgb(226, 242, 88), rgb(236, 243, 43));
+    }
+
+    .register-user-wrap {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .register-user-wrap a {
+      font-weight: 600;
+    }
+
+    .msg-wrap {
+      font-size: 13px;
+      text-align: center;
+      color: #888;
+      padding-top: 20px;
+    }
+  </style>
+  <div class="wrap">
+    <div class="login">
+      <h2>로그인</h2>
+      <div class="fwidth">
+        <form role="form" method="post" action="/login" class="text-start">
+          <div class="login_id">
+            <input type="text" class="form-control" name="email" placeholder="이메일을 입력해 주세요">
+          </div>
+          <div class="login_pw">
+            <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력해 주세요">
+          </div>
+          <div class="text-center">
+            <button type="submit" name="login" class="btn submit" style="font-size:16px;">Login</button>
+          </div>
+          <div class="msg-wrap">
+          </div>
+        </form>
+        <div class="text-center">
+          <a href="/kakao"><button id="kakao_btn" class="btn submit" style="font-size:16px;">KAKAO TALK
+              Login</button></a>
+        </div>
+        <div class="register-user-wrap">
+          <span>계정이 없으시다면 <a href="/sign">회원가입</a></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get('loginError')) {
+        alert(new URL(location.href).searchParams.get('loginError'));
+      }
+    };
+  </script>
+  {% block script %}
+  {% endblock %}
+</body>
+
+</html>

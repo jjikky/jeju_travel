@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row" data-masonry='{"percentPosition": true }' style="margin-top:20px; margin-left:3px; margin-right: 0px;">
+    {% for i in attraction %}
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+            <img src="{{ i.dataValues.Attraction_Url }}" class="card-img-top" alt="Photo goes here">
+            <div class="card-body">
+                <h5 class="card-title"><b>
+                        {{ i.dataValues.Attraction_Name}}
+                    </b></h5>
+                <p class="card-text">
+                    {{ i.dataValues.Attraction_Call}}
+                </p>
+                <p class="card-text">
+                    {{i.dataValues.Attraction_Kind }}<br><br>
+                    {{i.dataValues.Attraction_Report }}
+                </p>
+                <a href="/review/{{i.dataValues.Attraction_Name}}" class="btn btn-primary">리뷰 보기</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

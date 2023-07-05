@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    .container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    table.main {
+        text-align: center;
+        width: 70%;
+        border-collapse: collapse;
+        line-height: 1.5;
+        margin: 0 auto;
+    }
+
+    table.main thead {
+        border-right: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        background: #120d41;
+    }
+
+    table.main thead th {
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: center;
+        color: #fff;
+    }
+
+    table.main thead th.th_value {
+        text-align: center;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: center;
+        color: black;
+    }
+
+    table.main tbody th {
+        text-align: center;
+        width: 100px;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: center;
+        background: rgba(0, 0, 128, 0.116);
+    }
+
+    table.main td {
+        text-align: center;
+        width: 350px;
+        padding: 10px;
+        vertical-align: center;
+    }
+
+    table.main tbody tr {
+        border-bottom: 1px solid navy;
+    }
+</style>
+<div class="container">
+    <table class="main">
+        <thead>
+            <tr>
+                <th scope="cols">별점</th>
+                <th scope="cols">장소</th>
+                <th scope="cols">내용</th>
+                <th scope="cols">쓴 사람</th>
+                <th scope="cols">날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in review%}
+            <tr class="highlight1">
+                <th scope="row">{{ i.dataValues.Review_Star }}</th>
+                <td>{{ i.dataValues.Attraction_Name }}</td>
+                <td>{{ i.dataValues.Review_Text }}</td>
+                <td>{{i.dataValues.email}}</td>
+                <td>{{i.dataValues.Review_Visit_Date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    .activity {
+        text-align: center;
+        margin-top: 10vh;
+    }
+
+    .activity_name {
+        margin-top: 20vh;
+        text-align: center;
+    }
+
+    .activity_img {
+        margin-top: 3vh;
+        text-align: center;
+    }
+</style>
+<div class="activity">
+    {% for i in activity %}
+    <div class="activity_container">
+        <a href="/activity/{{i.dataValues.id}}">
+            <h3 class="activity_name">{{i.dataValues.Activity_Name}}</h3>
+            <img class="activity_img" src={{i.dataValues.Activity_Img}}>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+<script>
+    var nav = document.getElementsByClassName('nav-link');
+    for (var i = 0; i < nav.length; i++) {
+        nav[i].className = 'nav-link';
+    }
+    document.getElementsByClassName('nav-link')[2].className += ' active';
+    document.getElementsByClassName('nav-link')[7].className += ' active';
+</script>
+{% endblock %}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 완료</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Noto Sans KR", sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    .wrap {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .signup {
+      width: 50%;
+      height: 600px;
+      background: white;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h2 {
+      color: navy;
+      font-size: 100px;
+    }
+
+    .info {
+      font-size: 25px;
+      color: black;
+      padding: 20px 0;
+    }
+
+    span {
+      padding: 30px 0 50px 0;
+      font-size: 18px;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: navy;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+  <div class="wrap">
+    <div class="signup">
+      <h2><i class="fas fa-check"></i></h2>
+      <h2 class="info">Jeju Travel 회원가입이 <font style="font-weight: 700;">완료</font>되었습니다.</h2>
+      <span>회원님은 Jeju Travel의 모든 기능을 사용하실 수 있습니다. 회원접속 후 이용 가능합니다.</span>
+      <button onclick="location.href='/login'">로그인페이지로 이동</button>
+
+    </div>
+  </div>
+</body>
+
+</html>

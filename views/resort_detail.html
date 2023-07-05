@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    .container {
+        margin-top: 50px;
+    }
+
+    .search-wrap {
+        display: flex;
+    }
+
+    .search-wrap .form-select {
+        width: 300px;
+    }
+</style>
+<div class="container">
+    <form method="POST" action="/resort" class="row g-3 needs-validation" novalidate>
+        <div class="row g-3">
+            <div class="col-md-3">
+                <label for="place" class="form-label">장소 선택</label>
+                <div class="search-wrap">
+                    <select class="form-select" id="place" name="Area_Number" required>
+                        <option selected disabled value="">선택...</option>
+                        <option value="전체">전체</option>
+                        {% for i in area_all %}
+                        <option value="{{i.dataValues.Area_Number}}">
+                            {{i.dataValues.Area_Dong}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <div class="invalid-feedback">
+                        장소를 선택하세요.
+                    </div>
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">검색</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    var nav = document.getElementsByClassName('nav-link');
+    for (var i = 0; i < nav.length; i++) {
+        nav[i].className = 'nav-link';
+    }
+    document.getElementsByClassName('nav-link')[1].className += ' active';
+    document.getElementsByClassName('nav-link')[6].className += ' active';
+</script>
+<div class="container">
+    <h1>
+        {{area.dataValues.Area_Dong }} 검색 결과
+    </h1>
+    <div class="row" data-masonry='{"percentPosition": true }'>
+        {% for i in resort %}
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card">
+                <img src="{{ i.dataValues.Resort_Url }}" class="card-img-top" alt="Photo goes here">
+                <div class="card-body">
+                    <h5 class="card-title"><b>
+                            {{ i.dataValues.Resort_Name}}
+                        </b></h5>
+                    <p class="card-text">
+                        {{ i.dataValues.Resort_Call}}
+                    </p>
+                    <p class="card-text">
+                        {{area.dataValues.Area_Province }}
+                        {{area.dataValues.Area_City }}
+                        {{area.dataValues.Area_Dong }}
+                    </p>
+                    <a
+                        href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query={{i.dataValues.Resort_Name}}">Go
+                        Now <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script>
+    var nav = document.getElementsByClassName('nav-link');
+    for (var i = 0; i < nav.length; i++) {
+        nav[i].className = 'nav-link';
+    }
+    document.getElementsByClassName('nav-link')[1].className += ' active';
+    document.getElementsByClassName('nav-link')[6].className += ' active';
+</script>
+{% endblock %}
